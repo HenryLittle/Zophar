@@ -3,6 +3,7 @@
 //
 
 #include <numeric>
+#include <algorithm>
 #include <random>
 #include "PerlinNoise.hpp"
 

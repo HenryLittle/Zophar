@@ -5,6 +5,7 @@
 #ifndef RENDERENGINE_EULARCAMERA_HPP
 #define RENDERENGINE_EULARCAMERA_HPP
 
+#include <memory>
 #include "AbstractCamera.hpp"
 
 enum CameraMove {

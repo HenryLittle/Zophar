@@ -6,7 +6,6 @@
 #define RENDERENGINE_TERRAINGENERATOR_HPP
 
 
-#include <MacTypes.h>
 #include "../../lib/glm/fwd.hpp"
 #include "../Utils/ByteBuffer.hpp"
 

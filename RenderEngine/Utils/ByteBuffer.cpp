@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <cstring>
 #include "ByteBuffer.hpp"
 
 ByteBuffer::ByteBuffer(unsigned int byteCount) {
