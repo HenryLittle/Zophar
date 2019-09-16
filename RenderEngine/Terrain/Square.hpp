@@ -6,7 +6,7 @@
 #define RENDERENGINE_SQUARE_HPP
 
 
-#include "../../lib/glm/fwd.hpp"
+#include <glm/fwd.hpp>
 
 class Square {
 public:

@@ -5,8 +5,8 @@
 #ifndef RENDERENGINE_ABSTRACTCAMERA_HPP
 #define RENDERENGINE_ABSTRACTCAMERA_HPP
 
-#include "../../lib/glm/glm.hpp"
-#include "../../lib/glm/gtc/matrix_transform.hpp"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 class AbstractCamera{
 public:

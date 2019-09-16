@@ -13,8 +13,8 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "../lib/glm/glm.hpp"
-#include "../lib/glm/gtc/type_ptr.hpp"
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 class Shader{
 public:

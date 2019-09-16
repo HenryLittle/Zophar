@@ -4,19 +4,22 @@ project(${PROJECT_NAME})
 
 set(CMAKE_CXX_STANDARD 11)
 
+if(APPLE)
+    # Fix linking on 10.14+. See https://stackoverflow.com/questions/54068035
+    link_directories(/usr/local/lib)
+endif()
+
 find_package(PkgConfig REQUIRED)
 pkg_search_module(GLFW REQUIRED glfw3)
-include_directories(${GLFW_INCLUDE_DIRS})
-
-find_package(GLEW REQUIRED)
-if (GLEW_FOUND)
-    message(STATUS "Found GLFW3 in ${GLFW3_INCLUDE_DIR}")
-    include_directories(${GLEW_INCLUDE_DIRS})
-    link_libraries(${OPENGL} ${GLEW_LIBRARIES})
+if (GLFW_FOUND)
+    include_directories(${GLFW_INCLUDE_DIRS})
+    link_libraries(${GLFW_LIBRARIES})
 endif()
 
 find_package(OpenGL REQUIRED)
 if (OPENGL_FOUND)
+
+    include_directories(${OPENGL_INCLUDE_DIRS})
     link_libraries(${OPENGL_LIBRARY})
 endif()
 
@@ -24,13 +27,14 @@ endif()
 set(SYS_INCLUDE /usr/local/include/)
 set(PROJECT_INCLUDE ./include)
 # add to headers
-include_directories(${SYS_INCLUDE} ${PROJECT_INCLUDE} ${OPENGL_INCLUDE_DIRS})
+include_directories(${SYS_INCLUDE} ${PROJECT_INCLUDE})
 
 
 # set(GLEW_LINK /usr/local/lib/libGLEW.2.1.dylib)
-# set(GLFW_LINK /usr/local/lib/libglfw.3.dylib)
-
-# link_libraries(${OPENGL})
+#if (APPLE)
+#    set(GLFW_LINK /usr/local/lib/libglfw.3.dylib)
+#    link_libraries(${GLFW_LINK})
+#endif ()
 
 file(GLOB SOURCE_FILES
         "testEngine.cpp"
@@ -51,5 +55,5 @@ add_executable(${PROJECT_NAME} ${SOURCE_FILES} RenderEngine/Terrain/PerlinNoise.
 if (APPLE)
     target_link_libraries(${PROJECT_NAME} "-framework OpenGL")
 else()
-    target_link_libraries(${PROJECT_NAME} ${GLFW_LIBRARIES} "-ldl")
+    target_link_libraries(${PROJECT_NAME} "-ldl")
 endif()

@@ -6,7 +6,7 @@
 #define RENDERENGINE_TERRAINGENERATOR_HPP
 
 
-#include "../../lib/glm/fwd.hpp"
+#include <glm/fwd.hpp>
 #include "../Utils/ByteBuffer.hpp"
 
 class TerrainGenerator {
