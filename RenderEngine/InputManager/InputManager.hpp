@@ -3,13 +3,14 @@
 //
 
 
-#ifndef OH_KAMI_INPUTMANAGER_HPP
-#define OH_KAMI_INPUTMANAGER_HPP
+#ifndef RENDERENGINE_INPUTMANAGER_HPP
+#define RENDERENGINE_INPUTMANAGER_HPP
 
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include "../Camera/EularCamera.hpp"
-
+//#include "../SolarSystem/CelestialBody.hpp"
 
 
 class InputManager {
@@ -33,5 +34,11 @@ static void cursor_position_callback(GLFWwindow *window, double xpos, double ypo
 
 static void framebuffer_size_callback(GLFWwindow *window, int width, int height);
 
-#endif //OH_KAMI_INPUTMANAGER_HPP
+static void scroll_callback(GLFWwindow *window, double xoffset, double yoffset);
+
+static void cursor_enter_callback(GLFWwindow* window, int entered);
+
+static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+
+#endif //RENDERENGINE_INPUTMANAGER_HPP
 

@@ -55,19 +55,28 @@ void Shader::activate() {
 }
 
 void Shader::setBool(const std::string &name, bool value) const {
+    glUseProgram(ID);
     glUniform1i(glGetUniformLocation(ID, name.c_str()), (int)value);
 }
 
 void Shader::setFloat(const std::string &name, float value) const {
+    glUseProgram(ID);
     glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
 }
 
 void Shader::setInt(const std::string &name, int value) const {
+    glUseProgram(ID);
     glUniform1i(glGetUniformLocation(ID, name.c_str()), value);
 }
 
 void Shader::setMat4(const std::string &name, glm::mat4 mat4, GLenum transpose) const {
+    glUseProgram(ID);
     glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, transpose, glm::value_ptr(mat4));
+}
+
+void Shader::setVec3(const std::string &name, glm::vec3 vec3) const {
+    glUseProgram(ID);
+    glUniform3f(glGetUniformLocation(ID, name.c_str()), vec3.x, vec3.y, vec3.z);
 }
 
 void Shader::checkCompileErr(unsigned int shader, const std::string &type) {

@@ -9,6 +9,6 @@
 
 const int OPENGL_MAJOR_VERSION = 3;
 const int OPENGL_MINOR_VERSION = 3;
-const std::string WINDOW_NAME = "Phantom Engine";
+const std::string WINDOW_NAME = "Solar System Simulation";
 
 #endif //RENDERENGINE_ENGINECONFIG_HPP

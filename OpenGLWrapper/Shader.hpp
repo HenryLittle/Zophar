@@ -2,8 +2,8 @@
 // Created by Henry Little on 2019-06-06.
 //
 
-#ifndef OH_KAMI_SHADER_HPP
-#define OH_KAMI_SHADER_HPP
+#ifndef RENDERENGINE_SHADER_HPP
+#define RENDERENGINE_SHADER_HPP
 
 
 #include <string>
@@ -26,10 +26,11 @@ public:
     void setInt(const std::string &name, int value) const;
     void setFloat(const std::string &name, float value) const;
     void setMat4(const std::string &name, glm::mat4 mat4, GLenum transpose = GL_FALSE) const;
+    void setVec3(const std::string &name, glm::vec3 vec3) const;
 private:
     static void checkCompileErr(unsigned int shader, const std::string& type);
 };
 
 
 
-#endif //OH_KAMI_SHADER_HPP
+#endif //RENDERENGINE_SHADER_HPP

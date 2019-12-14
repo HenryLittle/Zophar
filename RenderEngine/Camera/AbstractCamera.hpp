@@ -12,6 +12,7 @@ class AbstractCamera{
 public:
     virtual glm::mat4 getPerspectiveMat() = 0;
     virtual glm::mat4 getViewMat() = 0;
+    virtual glm::vec3 getEyePosition() = 0;
 };
 
 #endif //RENDERENGINE_ABSTRACTCAMERA_HPP

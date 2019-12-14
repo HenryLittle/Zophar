@@ -7,15 +7,18 @@
 
 #include "../WindowManager/WindowManager.hpp"
 #include "../Camera/AbstractCamera.hpp"
-
 /* A singleton object that contains all the references in the pipeline */
 
 class Context {
 public:
     static Context& Instance();
     WindowManager* windowManager = nullptr;
-    AbstractCamera* camera;
+    AbstractCamera* camera = nullptr;
+    // render information
     int width, height;
+    bool wireFrame = false;
+    // control config
+    bool invertXY = false;
 private:
 
 };

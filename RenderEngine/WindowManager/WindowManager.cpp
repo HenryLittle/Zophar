@@ -2,7 +2,6 @@
 // Created by Henry Little on 2019-09-11.
 //
 
-#include <glad/glad.h>
 #include "WindowManager.hpp"
 #include "../Context/Context.hpp"
 

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
-set(PROJECT_NAME RenderEngine)
+set(PROJECT_NAME Solar)
 project(${PROJECT_NAME})
 
 set(CMAKE_CXX_STANDARD 11)
@@ -23,6 +23,13 @@ if (OPENGL_FOUND)
     link_libraries(${OPENGL_LIBRARY})
 endif()
 
+find_package(ASSIMP REQUIRED)
+if (ASSIMP_FOUND)
+    message(INFO "Assimp found at " ${ASSIMP_LIBRARIES} )
+    include_directories(${ASSIMP_INCLUDE_DIRS})
+    link_libraries(${ASSIMP_LIBRARIES})
+endif()
+
 # might be system specific
 set(SYS_INCLUDE /usr/local/include/)
 set(PROJECT_INCLUDE ./include)
@@ -42,15 +49,18 @@ file(GLOB SOURCE_FILES
         "include/*"
         "lib/*.c"
         "RenderEngine/*.cpp"
-        "RenderEngine/Box/*.cpp"
+#        "RenderEngine/Box/*.cpp"
         "RenderEngine/Context/*.cpp"
         "RenderEngine/WindowManager/*.cpp"
         "RenderEngine/InputManager/*.cpp"
-        "RenderEngine/Camera/*.cpp"
-        "OpenGLWrapper/*.cpp"
+        "RenderEngine/Camera/*.hpp"
+        "OpenGLWrapper/Shader.cpp"
+        "RenderEngine/ObjectModel/Model.hpp"
+        "RenderEngine/SolarSystem/*.cpp"
+        "RenderEngine/ObjectModel/Model.cpp"
         )
 
-add_executable(${PROJECT_NAME} ${SOURCE_FILES} RenderEngine/Terrain/PerlinNoise.cpp RenderEngine/Terrain/PerlinNoise.hpp RenderEngine/Terrain/TerrainGenerator.cpp RenderEngine/Terrain/TerrainGenerator.hpp RenderEngine/Utils/ByteBuffer.cpp RenderEngine/Utils/ByteBuffer.hpp RenderEngine/Terrain/Square.cpp RenderEngine/Terrain/Square.hpp)
+add_executable(${PROJECT_NAME} ${SOURCE_FILES} )
 
 if (APPLE)
     target_link_libraries(${PROJECT_NAME} "-framework OpenGL")
