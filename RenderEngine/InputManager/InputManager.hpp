@@ -9,7 +9,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
-#include "../Camera/EularCamera.hpp"
+#include "../Camera/EularCamera.h"
 //#include "../SolarSystem/CelestialBody.hpp"
 
 

@@ -53,7 +53,7 @@ file(GLOB SOURCE_FILES
         "RenderEngine/Context/*.cpp"
         "RenderEngine/WindowManager/*.cpp"
         "RenderEngine/InputManager/*.cpp"
-        "RenderEngine/Camera/*.hpp"
+        "RenderEngine/Camera/*.cpp"
         "OpenGLWrapper/Shader.cpp"
         "RenderEngine/ObjectModel/Model.hpp"
         "RenderEngine/SolarSystem/*.cpp"
