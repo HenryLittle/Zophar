@@ -49,7 +49,6 @@ file(GLOB SOURCE_FILES
         "include/*"
         "lib/*.c"
         "RenderEngine/*.cpp"
-#        "RenderEngine/Box/*.cpp"
         "RenderEngine/Context/*.cpp"
         "RenderEngine/WindowManager/*.cpp"
         "RenderEngine/InputManager/*.cpp"
