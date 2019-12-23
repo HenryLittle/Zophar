@@ -30,7 +30,7 @@ void main()
     vec3 reflectDirection = reflect(-lightDirection, norm);
     vec3 viewDirection = normalize(EyePos - FragPos);
     float lightSpecular = pow(max(dot(viewDirection, reflectDirection), 0.0), 32);
-    vec3 specular = lightSpecular * LightColor;
+    vec3 specular = SpecularStrength * lightSpecular * LightColor;
 
     // compose the final result
     FragColor = vec4((ambient + diffuse + specular), 1.0) * texture(texture_diffuse1, TexCoords);

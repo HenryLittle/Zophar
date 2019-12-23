@@ -7,7 +7,7 @@
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-#include "../../../OpenGLWrapper/Shader.hpp"
+#include "../../../OpenGLWrapper/Shader.h"
 #include "../../Context/Context.hpp"
 
 
@@ -29,7 +29,7 @@ public:
         glGenVertexArrays(1, &VAO);
 
         glBindVertexArray(VAO);
-        std::cout << sizeof(vertices) << std::endl;
+        //std::cout << sizeof(vertices) << std::endl;
         glBindBuffer(GL_ARRAY_BUFFER, VBO);
         glBufferData(GL_ARRAY_BUFFER, count * 3 * sizeof(float), vertices, GL_STATIC_DRAW);
 

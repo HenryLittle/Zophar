@@ -10,5 +10,6 @@
 const int OPENGL_MAJOR_VERSION = 3;
 const int OPENGL_MINOR_VERSION = 3;
 const std::string WINDOW_NAME = "Solar System Simulation";
+const std::string SHADER_PATH_PREFIX = "../shaders/";
 
 #endif //RENDERENGINE_ENGINECONFIG_HPP

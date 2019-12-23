@@ -79,4 +79,6 @@ void key_callback(GLFWwindow *window, int key, int scancode, int action, int mod
         CelestialBody::timeScaleFactor /= 2.0f;
     if (key == GLFW_KEY_RIGHT_BRACKET && action == GLFW_PRESS)
         CelestialBody::timeScaleFactor *= 2.0f;
+    if (key == GLFW_KEY_L && action == GLFW_PRESS)
+        Context::Instance().ctLight = !Context::Instance().ctLight;
 }

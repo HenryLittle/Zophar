@@ -60,7 +60,7 @@ file(GLOB SOURCE_FILES
         "RenderEngine/ObjectModel/Model.cpp"
         )
 
-add_executable(${PROJECT_NAME} ${SOURCE_FILES} )
+add_executable(${PROJECT_NAME} ${SOURCE_FILES} RenderEngine/SkyBox/SkyBox.cpp RenderEngine/SkyBox/SkyBox.h)
 
 if (APPLE)
     target_link_libraries(${PROJECT_NAME} "-framework OpenGL")

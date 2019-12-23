@@ -46,9 +46,8 @@ vec3 lightColor) {
         float D = r1 * exp(r2);
 
         // Geometric shadowing
-        float two_NdotH = 2.0 * NdotH;
-        float g1 = (two_NdotH * NdotV) / VdotH;
-        float g2 = (two_NdotH * NdotL) / VdotH;
+        float g1 = (2.0 * NdotH * NdotV) / VdotH;
+        float g2 = (2.0 * NdotH * NdotL) / VdotH;
         float G = min(1.0, min(g1, g2));
 
         Rs = (F * D * G) / (PI * NdotL * NdotV);
@@ -66,4 +65,13 @@ void main()
     ViewDirection,
     lightColor
     ), 1.0);
+    // add halo effect to the edge of the planet
+    float c = abs(dot(ViewDirection, Normal));
+    float l = dot(LightDirection, Normal);
+    float haloLimit = 0.6;
+    float haloStrength = 0.2;
+    vec3 haloColor = vec3(161.0/255.0, 217.0/255.0, 245.0/255.0);
+    if (c < haloLimit && l < 0) {
+        FragColor += haloStrength * sqrt(abs(l)) *  vec4(haloColor, 1.0) * (1.0 - (1.0 / haloLimit) * c) * (1.0 - (1.0 / haloLimit) * c);
+    }
 }

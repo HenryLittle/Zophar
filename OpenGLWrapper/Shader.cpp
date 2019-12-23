@@ -2,9 +2,10 @@
 // Created by Henry Little on 2019-09-12.
 //
 
-#include "Shader.hpp"
+#include "Shader.h"
+#include "../RenderEngine/EngineConfig.hpp"
 
-Shader::Shader(const char *vertexPath, const char *fragmentPath) {
+Shader::Shader(const std::string vertexPath, const std::string fragmentPath) {
     std::string vertexCode;
     std::string fragmentCode;
     std::ifstream vShaderFile;
@@ -13,8 +14,8 @@ Shader::Shader(const char *vertexPath, const char *fragmentPath) {
     fShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
     try {
         // open files
-        vShaderFile.open(vertexPath);
-        fShaderFile.open(fragmentPath);
+        vShaderFile.open(SHADER_PATH_PREFIX + vertexPath);
+        fShaderFile.open(SHADER_PATH_PREFIX + fragmentPath);
         std::stringstream vShaderStream, fShaderStream;
         vShaderStream << vShaderFile.rdbuf();
         fShaderStream << fShaderFile.rdbuf();

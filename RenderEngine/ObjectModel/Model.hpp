@@ -19,7 +19,7 @@
 
 
 
-#include "../../OpenGLWrapper/Shader.hpp"
+#include "../../OpenGLWrapper/Shader.h"
 
 #include <string>
 #include <fstream>

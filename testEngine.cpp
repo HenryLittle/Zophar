@@ -6,8 +6,9 @@
 #include "RenderEngine/RenderEngine.hpp"
 #include "RenderEngine/Camera/EularCamera.hpp"
 #include "RenderEngine/InputManager/InputManager.hpp"
-#include "OpenGLWrapper/Shader.hpp"
+#include "OpenGLWrapper/Shader.h"
 #include "RenderEngine/SolarSystem/CelestialBody.hpp"
+#include "RenderEngine/SkyBox/SkyBox.h"
 
 #define RADIAN(a) ((a)/180.0f * 3.141596)
 
@@ -50,18 +51,26 @@ int main() {
 
     // try to load the nano suit
     Shader cookTorranceShader = Shader(
-            "../shaders/cookTorrance.v.glsl",
-            "../shaders/cookTorrance.f.glsl");
+            "cookTorrance.v.glsl",
+            "cookTorrance.f.glsl");
 
     Shader phongShader = Shader(
-            "../shaders/phong.v.glsl",
-            "../shaders/phong.f.glsl");
+            "phong.v.glsl",
+            "phong.f.glsl");
 
     Shader sunShader = Shader(
-            "../shaders/sun.v.glsl",
-            "../shaders/sun.f.glsl");
+            "sun.v.glsl",
+            "sun.f.glsl");
 
+    Shader skyBoxShader = Shader(
+            "skybox/skybox.v.glsl",
+            "skybox/skybox.f.glsl"
+            );
 
+    auto skyBox = SkyBox("../texture/defaultSky/", "jpg");
+    auto galaxyCoreBox = SkyBox("../texture/GalaxyCore/", "png");
+    auto crabNebulaBox = SkyBox("../texture/CrabNebula/", "png");
+    auto darkGalaxyBox = SkyBox("../texture/DarkGalaxy/", "png");
     auto *sun = new CelestialBody("sun", 2.40f);
     sun->rotationAngleSpeed = 0.040f;
 
@@ -208,16 +217,36 @@ int main() {
 
         // render the celestial objects
         sun->render(sunShader);
-        mercury->render(cookTorranceShader);
-        venus->render(cookTorranceShader);
-        earth->render(cookTorranceShader);
-        moon->render(cookTorranceShader);
-        mars->render(cookTorranceShader);
-        jupiter->render(cookTorranceShader);
-        saturn->render(cookTorranceShader);
-        uranus->render(cookTorranceShader);
-        neptune->render(cookTorranceShader);
+        if (Context::Instance().ctLight) {
+            mercury->render(cookTorranceShader);
+            venus->render(cookTorranceShader);
+            earth->render(cookTorranceShader);
+            moon->render(cookTorranceShader);
+            mars->render(cookTorranceShader);
+            jupiter->render(cookTorranceShader);
+            saturn->render(cookTorranceShader);
+            uranus->render(cookTorranceShader);
+            neptune->render(cookTorranceShader);
+        } else {
+            mercury->render(phongShader);
+            venus->render(phongShader);
+            earth->render(phongShader);
+            moon->render(phongShader);
+            mars->render(phongShader);
+            jupiter->render(phongShader);
+            saturn->render(phongShader);
+            uranus->render(phongShader);
+            neptune->render(phongShader);
+        }
 
+
+        auto clippedView = glm::mat4(glm::mat3(view));
+        skyBoxShader.setMat4("view", clippedView);
+        skyBoxShader.setMat4("projection", perspective);
+//        skyBox.render(skyBoxShader);
+//        galaxyCoreBox.render(skyBoxShader);
+        //crabNebulaBox.render(skyBoxShader);
+        darkGalaxyBox.render(skyBoxShader);
         // should be managed by the engine or its sub_modules
         // poll & swap buffer
         glfwPollEvents();

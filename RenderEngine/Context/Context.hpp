@@ -19,6 +19,7 @@ public:
     bool wireFrame = false;
     // control config
     bool invertXY = false;
+    bool ctLight = true;
 private:
 
 };
