@@ -5,7 +5,7 @@
 #ifndef RENDERENGINE_CONTEXT_HPP
 #define RENDERENGINE_CONTEXT_HPP
 
-#include "../WindowManager/WindowManager.hpp"
+#include "../WindowManager/WindowManager.h"
 #include "../Camera/AbstractCamera.h"
 /* A singleton object that contains all the references in the pipeline */
 

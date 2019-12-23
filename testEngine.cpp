@@ -2,13 +2,12 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 
-//#include "RenderEngine/Box/Box.hpp"
-#include "RenderEngine/RenderEngine.hpp"
-#include "RenderEngine/Camera/EularCamera.h"
-#include "RenderEngine/InputManager/InputManager.hpp"
 #include "OpenGLWrapper/Shader.h"
-#include "RenderEngine/SolarSystem/CelestialBody.hpp"
+#include "RenderEngine/RenderEngine.h"
 #include "RenderEngine/SkyBox/SkyBox.h"
+#include "RenderEngine/Camera/EularCamera.h"
+#include "RenderEngine/InputManager/InputManager.h"
+#include "RenderEngine/SolarSystem/CelestialBody.h"
 
 #define RADIAN(a) ((a)/180.0f * 3.141596)
 

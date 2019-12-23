@@ -6,8 +6,8 @@
 #define RENDERENGINE_RENDERENGINE_HPP
 
 #include <vector>
-#include "Context/Context.hpp"
-#include "Renderable.hpp"
+#include "Context/Context.h"
+#include "Renderable.h"
 #include "Camera/AbstractCamera.h"
 #include "Camera/EularCamera.h"
 

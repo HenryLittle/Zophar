@@ -7,7 +7,7 @@
 
 #include <memory>
 #include "AbstractCamera.h"
-#include "../Context/Context.hpp"
+#include "../Context/Context.h"
 
 enum CameraMove {
     FORWARD,

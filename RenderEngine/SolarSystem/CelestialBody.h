@@ -43,13 +43,13 @@ public:
     // cache
     double prevTime;
 
-    CelestialBody(string name, float bodyRadius = 1.0f, float orbitRadius = 0.0f, float orbitAngle = 0.0f,
-                  float rotationAngle = 0.0f, float rotationAngleSpeed = 1.0f, float revolutionAngleSpeed = 1.0f);
+    CelestialBody(string name, float bodyRadius = 1.0f, 
+                  float orbitRadius = 0.0f, float orbitAngle = 0.0f,
+                  float rotationAngle = 0.0f, float rotationAngleSpeed = 1.0f, 
+                  float revolutionAngleSpeed = 1.0f);
 
-    void setCenterBody(CelestialBody *body) {
-        centerBody = body;
-    };
-
+    void setCenterBody(CelestialBody *body);
+    
     // return the composed revolution matrix
     glm::mat4 getRevolutionMatrix(double time);
 
