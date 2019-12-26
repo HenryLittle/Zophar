@@ -2,8 +2,8 @@
 // Created by Henry Little on 2019-09-11.
 //
 
-#include "WindowManager.hpp"
-#include "../Context/Context.hpp"
+#include "WindowManager.h"
+#include "../Context/Context.h"
 
 WindowManager::WindowManager(int width, int height) {
     // 初始化 GLFW

@@ -1,71 +1,29 @@
-//
-// Created by Henry Little on 2019-09-12.
-//
-
-#ifndef RENDERENGINE_EULARCAMERA_HPP
-#define RENDERENGINE_EULARCAMERA_HPP
-
-#include <memory>
-#include "AbstractCamera.hpp"
-#include "../Context/Context.hpp"
-
-enum CameraMove {
-    FORWARD,
-    BACKWARD,
-    LEFT,
-    RIGHT,
-    UP,
-    DOWN
-};
-
-// Default camera values
-const float YAW = -90.0f;
-const float PITCH = 0.0f;
-const float SPEED = 2.5f;
-const float SENSITIVITY = 0.1f;
-const float ZOOM = 45.0f;
-
-class EularCamera : public AbstractCamera {
-
-public:
-    // Camera Attributes
-    glm::vec3 position;
-    glm::vec3 front;
-    glm::vec3 up; // up for the camera
-    glm::vec3 right;
-    glm::vec3 worldUp; // the world's up direction
-    // Euler Angles
-    float yaw;
-    float pitch;
-    // Camera options
-    float movementSpeed;
-    float mouseSensitivity;
-    float zoom;
-
-    EularCamera(glm::vec3 mPosition = glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 mUp = glm::vec3(0.0f, 1.0f, 0.0f),
-                float mYaw = YAW, float mPitch = PITCH) : front(glm::vec3(0.0f, 0.0f, -1.0f)), movementSpeed(SPEED),
-                                                          mouseSensitivity(SENSITIVITY), zoom(ZOOM) {
+#include "EularCamera.h"
+ 
+EularCamera::EularCamera(glm::vec3 mPosition, glm::vec3 mUp, float mYaw, float mPitch):front(glm::vec3(0.0f, 0.0f, -1.0f)), 
+                movementSpeed(SPEED),
+                mouseSensitivity(SENSITIVITY), zoom(ZOOM){
         position = mPosition;
         worldUp = mUp;
         yaw = mYaw;
         pitch = mPitch;
         updateCameraVectors();
-    }
+}
 
-    glm::mat4 getPerspectiveMat() override {
+glm::mat4 EularCamera::getPerspectiveMat() {
         return glm::perspective(glm::radians(zoom),
                                 (float) Context::Instance().width / (float) Context::Instance().height, 0.1f, 100.0f);
-    };
+}
 
-    glm::mat4 getViewMat() override {
+glm::mat4 EularCamera::getViewMat() {
         return glm::lookAt(position, position + front, up);
     };
 
-    glm::vec3 getEyePosition() override {
-        return this->position;
-    }
+glm::vec3 EularCamera::getEyePosition() {
+    return this->position;
+}
 
-    void processMouseInput(float offsetX, float offsetY, bool constraint = true) {
+void EularCamera::processMouseInput(float offsetX, float offsetY, bool constraint) {
         offsetX *= mouseSensitivity * (zoom / 45.0f);
         offsetY *= mouseSensitivity * (zoom / 45.0f);
         if (Context::Instance().invertXY) {
@@ -88,8 +46,7 @@ public:
         updateCameraVectors();
     };
 
-
-    void processKeyInput(CameraMove move, float deltaTime) {
+void EularCamera::processKeyInput(CameraMove move, float deltaTime) {
         float offset = movementSpeed * deltaTime;
         if (move == FORWARD)
             position += front * offset;
@@ -105,7 +62,7 @@ public:
             position -= worldUp * offset;
     };
 
-    void processMouseScroll(float offset) {
+void EularCamera::processMouseScroll(float offset) {
         // TODO: a better zoom handling
         if (zoom >= 1.0f && zoom <= 45.0f)
             zoom -= offset;
@@ -115,10 +72,7 @@ public:
             zoom = 45.0f;
     }
 
-private:
-
-    // calculate the normalized cam vectors from yaw and pitch angles (!potential lock)
-    void updateCameraVectors() {
+void EularCamera::updateCameraVectors() {
         glm::vec3 tFront;
         tFront.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
         tFront.y = sin(glm::radians(pitch));
@@ -128,7 +82,3 @@ private:
         right = glm::normalize(glm::cross(front, worldUp));
         up = glm::normalize(glm::cross(right, front));
     };
-};
-
-
-#endif //RENDERENGINE_EULARCAMERA_HPP

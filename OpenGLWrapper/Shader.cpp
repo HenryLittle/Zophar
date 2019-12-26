@@ -3,7 +3,7 @@
 //
 
 #include "Shader.h"
-#include "../RenderEngine/EngineConfig.hpp"
+#include "../RenderEngine/EngineConfig.h"
 
 Shader::Shader(const std::string vertexPath, const std::string fragmentPath) {
     std::string vertexCode;

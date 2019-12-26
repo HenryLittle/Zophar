@@ -2,8 +2,8 @@
 // Created by Henry Little on 2019-06-12.
 //
 
-#include "InputManager.hpp"
-#include "../SolarSystem/CelestialBody.hpp"
+#include "InputManager.h"
+#include "../SolarSystem/CelestialBody.h"
 
 // Global static pointer used to ensure a single instance of the class
 

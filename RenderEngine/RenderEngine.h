@@ -6,10 +6,10 @@
 #define RENDERENGINE_RENDERENGINE_HPP
 
 #include <vector>
-#include "Context/Context.hpp"
-#include "Renderable.hpp"
-#include "Camera/AbstractCamera.hpp"
-#include "Camera/EularCamera.hpp"
+#include "Context/Context.h"
+#include "Renderable.h"
+#include "Camera/AbstractCamera.h"
+#include "Camera/EularCamera.h"
 
 /* The render engine is responsible for manage the render pipeline for each frame
  *  and manage the window & input

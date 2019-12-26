@@ -2,7 +2,7 @@
 // Created by Henry Little on 2019/10/18.
 //
 
-#include "CelestialBody.hpp"
+#include "CelestialBody.h"
 
 float CelestialBody::timeScaleFactor = 1.0f;
 bool CelestialBody::pause = false;
@@ -45,6 +45,10 @@ void CelestialBody::render(Shader shader) {
         orbit->setModel(getOrbitModelMatrix(time));
         orbit->render();
     }
+}
+
+void CelestialBody::setCenterBody(CelestialBody *body) {
+        centerBody = body;
 }
 
 void CelestialBody::initAxis() {

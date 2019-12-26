@@ -8,7 +8,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include "../../../OpenGLWrapper/Shader.h"
-#include "../../Context/Context.hpp"
+#include "../../Context/Context.h"
 
 
 #include <cmath>

@@ -2,7 +2,7 @@
 // Created by Henry Little on 2019-09-11.
 //
 
-#include "RenderEngine.hpp"
+#include "RenderEngine.h"
 
 std::vector<RenderablePtr> RenderEngine::renderList;
 
